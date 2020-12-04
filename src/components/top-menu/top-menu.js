@@ -22,28 +22,30 @@ class TopMenu extends Component {
           </Menu.Item>
           <Menu.Menu position='right'>
             <Menu.Item 
-              name='denarius'
-              style={{ color: "white" }}
+              name='denarius/process-history'
+              style={{ color: "white", fontSize: '16px' }}
               onClick={this.handleItemClick}
               >
               <Icon style={{ float: "left", marginRight: "10px" }} name="home" />
-              Denarius
+              Control panel
             </Menu.Item>
             <Menu.Item 
               name='datos'
-              style={{ color: "white" }}
+              style={{ color: "white", fontSize: '16px' }}
               active={this.state.activeItem === 'datos'}
               onClick={this.handleItemClick}
               >
-              Datos maestros
+              <Icon style={{ float: "left", marginRight: "10px" }} name="exchange" />
+              Transfers
             </Menu.Item>
             <Menu.Item 
               name='costes'
-              style={{ color: "white" }}
+              style={{ color: "white", fontSize: '16px' }}
               active={this.state.activeItem === 'costes'}
               onClick={this.handleItemClick}
               >
-              Costes boadilla
+              <Icon style={{ color: "white" }} name="globe" />
+              Boadila expenses
             </Menu.Item>
             <Menu.Item 
               name='info'

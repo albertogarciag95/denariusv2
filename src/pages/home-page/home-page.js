@@ -11,31 +11,31 @@ class HomePage extends React.Component {
     this.state = {
       homeSections: [
         {
-          title: 'Empezar un proceso',
+          title: 'Start process',
           imageUrl: 'assets/data.jpg',
           id: 1,
           linkUrl: 'shop/hats'
         },
         {
-          title: 'Cargar inputs',
+          title: 'Upload inputs',
           imageUrl: '../../../assets/data.jpg',
           id: 2,
           linkUrl: 'shop/jackets'
         },
         {
-          title: 'Histórico de procesos',
+          title: 'Process history',
           imageUrl: '../../../assets/data.jpg',
           id: 3,
           linkUrl: 'shop/sneakers'
         },
         {
-          title: 'Datos maestros',
+          title: 'Boadilla expenses',
           imageUrl: '../../../assets/data.jpg',
           id: 4,
           linkUrl: 'shop/womens'
         },
         {
-          title: 'DTypes',
+          title: 'Queries',
           imageUrl: '../../../assets/data.jpg',
           id: 5,
           linkUrl: 'shop/mens'
@@ -49,7 +49,7 @@ class HomePage extends React.Component {
       <Segment style={{ width: "100%", margin: 0, height: "800px", padding: "50px 300px", textAlign: "center"  }}>
         <Header as='h1' style={{ fontSize: "3.5em" }} >
           <Image circular src={logo}/>
-          Bienvenido a Denarius
+          Welcome to Denarius
         </Header>
         <div className="home-menu">
           {this.state.homeSections.map(section => (

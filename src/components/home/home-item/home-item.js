@@ -8,7 +8,7 @@ const HomeItem = ({ imageUrl, title, match, linkUrl, history }) => (
     onClick={() => history.push(`${match.url}${linkUrl}`)}>
     <div className="background-image" style={{ backgroundImage: `url(${Image})`}} />
     <div className="content">
-      <h1 className="title">{title.toUpperCase()}</h1>
+      <h1 className="title">{title}</h1>
     </div>
   </div>
 );
