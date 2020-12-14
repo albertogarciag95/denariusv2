@@ -5,7 +5,7 @@ const RoutePrivate = ({ component: Component, ...routeProps }) => (
   <Route 
     {...routeProps} 
     render={props => 
-      localStorage.getItem('isLoggedIn') ? (
+      localStorage.getItem('isLoggedIn') === 'true' ? (
         <Component {...props} />
       ) : (
         <Redirect

@@ -3,18 +3,19 @@ import { Header, Image, Form, Button } from "semantic-ui-react";
 import { withRouter } from "react-router-dom";
 import logo from "../../assets/logo.png";
 
-const LoginPage = ({ history }) => {
+const LoginPage = ({ history, onLogin }) => {
   const [isLoggedIn, setIsloggedIn] = useState(null);
   const [userName, setUserName] = useState(null);
   const [password, setPassword] = useState(null);
 
   const doLogin = () => {
-    console.log(userName, password);
     if(userName === 'user12345' && password === 'pass12345') {
-      localStorage.setItem('isLoggedIn', true);
+      localStorage.setItem('isLoggedIn', 'true');
+      onLogin();
       history.push('/home');
     } else {
-      setIsloggedIn(false);
+      localStorage.setItem('isLoggedIn', 'false');
+      setIsloggedIn('false');
     }
   };
 
@@ -31,10 +32,10 @@ const LoginPage = ({ history }) => {
         </Form.Field>
         <Form.Field>
           <label>Password</label>
-          <input placeholder='Enter password' onChange={e => setPassword(e.target.value)}/>
+          <input type='password' placeholder='Enter password' onChange={e => setPassword(e.target.value)}/>
         </Form.Field>
-        {isLoggedIn === false && 
-          <div style={{ color: 'red', height: '30px', visibility: isLoggedIn === false ? 'visible' : 'hidden' }}>
+        {isLoggedIn === 'false' && 
+          <div style={{ color: 'red', height: '30px', visibility: isLoggedIn === 'false' ? 'visible' : 'hidden' }}>
             Error: Wrong username or password
           </div>
         }

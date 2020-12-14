@@ -10,7 +10,7 @@ import UploadInputsPage from "./pages/upload-inputs-page/upload-inputs";
 import DataManagementPage from "./pages/data-management-page/data-management-page";
 import EmptyPage from "./pages/empty-page/empty-page";
 import TopMenu from './components/top-menu/top-menu';
-import RoutePrivate from './components/Admin/route-private';
+import RoutePrivate from './components/admin-components/route-private';
 
 import './App.css';
 
@@ -18,6 +18,7 @@ class App extends React.Component {
   constructor(props) {
     super();
     this.state = {
+      isLoggedIn: localStorage.getItem('isLoggedIn'),
       sideBarOpened: false,
       dataManagementFields: [
         { order: 0, text: 'Id', inputType: 'text'},
@@ -47,11 +48,13 @@ class App extends React.Component {
     return (
       <div style={{ padding: "0 10px" }}>
         <BrowserRouter>
-          <TopMenu isLoggedIn={localStorage.getItem('isLoggedIn')}/>
+          <TopMenu onLogout={() => this.setState({ isLoggedIn: 'false'})} isLoggedIn={this.state.isLoggedIn}/>
           <div className="app-content">
             <div className="main-content">
               <Route exact path="/" render={() => <Redirect to="/login" />} />
-              <Route path={'/login'} component={() => <LoginPage />} />
+              <Route path={'/login'} component={() => 
+                <LoginPage onLogin={() => this.setState({ isLoggedIn: 'true' })} />} 
+              />
               <RoutePrivate path={'/transfers'} component={() => <EmptyPage title='Transfers' icon='arrows alternate horizontal' />} />
               <RoutePrivate path={'/costes'} component={() => <EmptyPage title='Boadilla expenses' icon='eur' />} />
               <RoutePrivate path={`/denarius`} component={DenariusPage} />
@@ -67,7 +70,7 @@ class App extends React.Component {
                 component={() => <DataManagementPage tableFields={this.state.dataManagementFields}/>} />
               <RoutePrivate path={`/home`} component={HomePage} />
             </div>
-            {this.state.isLoggedIn && <Menu fixed></Menu>}
+            {this.state.isLoggedIn === 'true' && <Menu fixed></Menu>}
           </div>
         </BrowserRouter>
       </div>
