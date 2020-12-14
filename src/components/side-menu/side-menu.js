@@ -20,8 +20,8 @@ class SideMenu extends React.Component {
   render() {
     return (
       <div style={{ display: 'flex', flexDirection: 'column' }}>
-        <Button basic icon style={{ width: '40px' }}>
-          <Icon name='bars' color='red' onClick={() => this.setState({ colapse: !this.state.colapse })}/>
+        <Button basic icon onClick={() => this.setState({ colapse: !this.state.colapse })} style={{ width: '40px' }}>
+          <Icon name='bars' color='red' />
         </Button>
         {!this.state.colapse ? 
           <Menu color="red" pointing vertical style={{ width: "240px", marginRight: "15px" }}>

@@ -10,3 +10,23 @@
   height: 100%;
   width: 100%;
 }
+
+.main-button {
+  color: rgb(236, 0, 0) !important;
+  background-color: white;
+}
+
+.main-button:hover {
+  background-color: rgb(236, 0, 0) !important;
+  color: white !important;
+}
+
+.main-button:focus {
+  background-color: rgb(236, 0, 0) !important;
+  color: white !important;
+}
+
+.main-button:active {
+  background-color: rgb(236, 0, 0) !important;
+  color: white !important;
+}

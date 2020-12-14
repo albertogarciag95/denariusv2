@@ -1,15 +1,56 @@
 import React, { useState } from "react";
-import { Segment, Header, Icon, Message, Table, Button, Pagination, Tab } from "semantic-ui-react";
+import { Segment, Header, Icon, Message, Table, Button, Pagination, Tab, Modal } from "semantic-ui-react";
 import './upload-inputs-page.scss';
 
 const UploadInputsPage = () => {
   const [showInfoMessage, isShown] = useState(true);
+  const [showLogsModal, logsModal] = useState(false);
+  const [inputSelected, setInputSelected] = useState(null); 
+
   const panes = [
     { menuItem: { content: 'Static', icon: 'folder'}, render: () => <Tab.Pane><InputTable /></Tab.Pane> },
     { menuItem: { content: 'Monthly', icon: 'folder'}, render: () => <Tab.Pane><InputTable /></Tab.Pane> }
   ];
 
   const InputTable = () => (<>
+    {showLogsModal && 
+      <Modal
+        closeIcon
+        onClose={() => logsModal(false)}
+        open={showLogsModal}>
+        <Modal.Header>
+          <Header as='h2'>
+            <Icon name='laptop' />
+            <Header.Content>{inputSelected}</Header.Content>
+          </Header>
+        </Modal.Header>
+        <Modal.Content>
+          <Segment>
+            <div style={{ width: '100%', display: 'inline-flex', justifyContent: 'space-between', marginBottom: '20px' }}>
+              <Header as='h2' color='teal'>
+                <Icon name='wait' />
+                <Header.Content>
+                  Waiting
+                  <Header.Subheader>Waiting for uploaded input</Header.Subheader>
+                </Header.Content>
+              </Header>
+              <span>12-11-2020 09.03.03</span>
+            </div>
+            <div style={{ width: '100%', display: 'inline-flex', justifyContent: 'space-between' }}>
+              <Header as='h2' color='red'>
+                <Icon name='attention' />
+                <Header.Content>
+                  Error
+                  <Header.Subheader>No ResourceType found for the file name X and sheet Y</Header.Subheader>
+                </Header.Content>
+              </Header>
+              <span>12-11-2020 09.03.05</span>
+            </div>
+          </Segment>
+        </Modal.Content>
+      </Modal>
+    }
+    
     <Table celled style={{ marginTop: 0 }}>
       <Table.Header>
         <Table.Row>
@@ -39,7 +80,7 @@ const UploadInputsPage = () => {
               buttons={[
                 { key: 'trash', icon: 'trash' },
                 { key: 'power', icon: 'power' },
-                { key: 'tv', icon: 'tv' }
+                { key: 'tv', icon: 'tv', onClick: () => { logsModal(true); setInputSelected('provisions_breakdown(v.44)') }}
               ]}
             />
           </Table.Cell>
@@ -135,7 +176,7 @@ const UploadInputsPage = () => {
               buttons={[
                 { key: 'trash', icon: 'trash' },
                 { key: 'power', icon: 'power' },
-                { key: 'tv', icon: 'tv' }
+                { key: 'tv', icon: 'tv', onClick: () => { logsModal(true); setInputSelected('Transfer inputs(v.39)') } }
               ]}
             />
           </Table.Cell> 
@@ -221,8 +262,8 @@ const UploadInputsPage = () => {
                 size='tiny'
                 style={{ visibility: showInfoMessage ? 'visible' : 'hidden', width: '460px' }}
                 onDismiss={() => isShown(false)}
-                header='Drag and drop a .zip file into the container below'
-                content='Or click it to upload from your file system'
+                header='Drag and drop a .zip file into the container below (not implemented)'
+                content='Click the tv icon to check '
               />
             )}
             <Segment style={{ height: '100%', alignItems: 'center', display: 'flex', textAlign: 'center', justifyContent: 'center' }}>

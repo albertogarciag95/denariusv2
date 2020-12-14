@@ -2,16 +2,16 @@ import React from "react";
 import { Modal, Icon, Header } from "semantic-ui-react";
 import logs from "./logs.gif";
 
-const LogsModal = ({ opened, onClose }) => (
+const LogsModal = ({ opened, onClose, selected }) => (
   <Modal
     closeIcon
-    size='small'
+    size='large'
     onClose={onClose}
     open={opened}>
     <Modal.Header>
       <Header as='h2'>
         <Icon name='laptop' />
-        <Header.Content>Proceso 635</Header.Content>
+        <Header.Content>Proceso {selected}</Header.Content>
       </Header>
     </Modal.Header>
     <Modal.Content>

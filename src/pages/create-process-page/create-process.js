@@ -21,7 +21,7 @@ class CreateProcessPage extends React.Component {
     const panes = [
       { 
         menuItem: { key: 'monthly', icon: 'folder', content: 'Monthly' }, 
-        render: () => <Tab.Pane><InputList /></Tab.Pane>
+        render: () => <Tab.Pane style={{ overflowY: 'scroll', height: '570px' }}><InputList /></Tab.Pane>
       },
       { 
         menuItem: { key: 'static', icon: 'folder', content: 'Static' },
@@ -92,7 +92,7 @@ class CreateProcessPage extends React.Component {
               </Form>
             </Grid.Column>
             <Grid.Column>
-              <Form style={{ marginBottom: '50px' }}>
+              <Form>
                 <Form.Group widths='equal'>
                   <Form.Field>
                     <label>Parameter 1</label>
@@ -118,7 +118,7 @@ class CreateProcessPage extends React.Component {
                   Add more
                 </a>
               </Form>
-              <Divider />
+              <Divider style={{ margin: '30px 0' }} />
               <Form>
                 <Form.Group widths='equal'>
                   <Form.Field>
@@ -172,7 +172,9 @@ class CreateProcessPage extends React.Component {
                   </List.Item>
                 </List>
                 <Modal
+                  size='large'
                   closeIcon
+                  style={{ height: '800px' }}
                   open={this.state.showInputsModal}
                   trigger={
                     <Button icon labelPosition='left' style={{ textAlign: 'center', width: '40%', height: '40px' }}>
@@ -184,7 +186,7 @@ class CreateProcessPage extends React.Component {
                 >
                   <Header icon='add' content='Add inputs' />
                   <Modal.Content>
-                    <div style={{ float: 'right'}} >
+                    <div style={{ float: 'right' }} >
                       <Button icon basic color='red' labelPosition='left'>
                         <Icon name='tasks' />
                         Massive selection
@@ -203,7 +205,7 @@ class CreateProcessPage extends React.Component {
                   </Modal.Actions>
                 </Modal>
               </div>
-              <Button size='big' style={{ bottom: 0, width: '40%', left: '60%' }} icon basic color='red' labelPosition='left'>
+              <Button className='main-button' inverted size='big' style={{ bottom: 0, width: '40%', marginLeft: '60%' }} color='red'>
                 <Icon name='play' />
                 Start
               </Button>

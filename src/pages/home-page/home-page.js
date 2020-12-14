@@ -1,7 +1,7 @@
 import React from "react";
 import { Segment, Header, Image } from "semantic-ui-react";
-import HomeItem from "../../components/home/home-item/home-item";
-import logo from "./logo.png";
+import HomeItem from "../../components/home/home-item/home-item"; 
+import logo from "../../assets/logo.png";
 import "./home-page.scss";
 
 class HomePage extends React.Component {
@@ -14,31 +14,31 @@ class HomePage extends React.Component {
           title: 'Start process',
           imageUrl: 'assets/data.jpg',
           id: 1,
-          linkUrl: 'shop/hats'
+          linkUrl: 'denarius/start-process'
         },
         {
           title: 'Upload inputs',
           imageUrl: '../../../assets/data.jpg',
           id: 2,
-          linkUrl: 'shop/jackets'
+          linkUrl: 'denarius/upload-inputs'
         },
         {
           title: 'Process history',
           imageUrl: '../../../assets/data.jpg',
           id: 3,
-          linkUrl: 'shop/sneakers'
+          linkUrl: 'denarius/process-history'
         },
         {
           title: 'Boadilla expenses',
           imageUrl: '../../../assets/data.jpg',
           id: 4,
-          linkUrl: 'shop/womens'
+          linkUrl: 'costes'
         },
         {
-          title: 'Queries',
+          title: 'Data management',
           imageUrl: '../../../assets/data.jpg',
           id: 5,
-          linkUrl: 'shop/mens'
+          linkUrl: 'denarius/data-management'
         }
       ]
     }
